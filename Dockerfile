@@ -7,7 +7,7 @@ LABEL about.home="https://github.com/Clinical-Genomics/chanjo-report"
 
 # Install required libs
 RUN apt-get update && apt-get install -y \
-  libcairo2 libpango-1.0-0 libpangocairo-1.0-0
+  libcairo2 libpango-1.0-0 libpangocairo-1.0-0 git
 
 WORKDIR /home/worker/app
 COPY . /home/worker/app

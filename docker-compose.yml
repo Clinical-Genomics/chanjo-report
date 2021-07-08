@@ -30,9 +30,7 @@ services:
 
     chanjo-report:
       container_name: chanjo-report
-      build:
-        context: .
-        dockerfile: Dockerfile
+      build: .
       depends_on:
         - mariadb
       networks:

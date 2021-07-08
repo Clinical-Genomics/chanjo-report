@@ -1,5 +1,9 @@
 # Change log
 
+## 4.8.1 (2021-07-08)
+### Fixed
+- Temporary fix in setup.py to use an up-to-date version of chanjo when the reports are created
+
 ## 4.8 (2020-11-20)
 ### Added
 - docker-compose and Makefile
