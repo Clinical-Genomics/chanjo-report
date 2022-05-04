@@ -33,4 +33,4 @@ def report(context, sample, language, host, port, debug):
         url = base_url
 
     click.echo(click.style(f"open browser to: {url}", fg="yellow"))
-    app.run(host=host or "0.0.0.0", port=port or 5000)
+    app.run(host=host, port=port)
