@@ -4,10 +4,10 @@
 Automatically generate basic coverage reports from Chanjo SQL databases. This plugin installs as a subcommand ("report") to the Chanjo command line interface.
 
 ## Usage
-Chanjo Report supports a number of output formats: tabular, PDF, and HTML. To print a PDF coverage report for a group of samples "WGS-prep" do:
+Visualize a coverage report for one ore more samples using the following command:
 
 ```bash
-$ chanjo report --render pdf --group "WGS-prep" > ./coverage-report.pdf
+$ chanjo --database mysql+pymysql://<db-user>:<db-password>@localhost:3306/<db-name> report --sample sample1 --sample sample2 --sample sample3
 ```
 
 ## Features
