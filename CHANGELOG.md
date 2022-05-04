@@ -9,6 +9,7 @@
 - Install requirements from requirements file parsed in setup.py
 ### Fixed
 - Error launching the app due to `LocalStack.__ident_func__` missing in werkzeug >= 2.1.x
+- Broken command line to create HTML and PDF report for one or more samples
 
 ## 4.9.2 (2022-02-07)
 ### Fixed
