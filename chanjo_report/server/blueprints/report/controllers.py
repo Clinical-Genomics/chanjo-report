@@ -1,6 +1,6 @@
 from chanjo.store.models import Sample
 from flask import session
-from numcompress import decompress
+from numcompress import compress, decompress
 
 from chanjo_report.server.constants import LEVELS
 
@@ -35,6 +35,7 @@ def report_contents(request):
                 gene_id_errors.add(gene_id)
 
         int_gene_ids = list(int_gene_ids)
+        session["all_genes"] = compress(int_gene_ids, precision=0)
     elif request.method == "GET" and session.get("all_genes"):
         int_gene_ids = decompress(session["all_genes"])
 
