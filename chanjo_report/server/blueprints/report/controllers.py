@@ -22,10 +22,10 @@ def report_contents(request):
     raw_gene_ids = request.args.get("gene_ids") or request.form.get("gene_ids")
     compression = request.args.get("compression") or request.form.get("compression")
 
-    if raw_gene_ids and compression:  # ex: 'B_twxZnv_nB_bwm@'
+    if raw_gene_ids and compression:  # ex: '?qi]~wNq_c@'
         session["all_genes"] = raw_gene_ids
         int_gene_ids = decompress(raw_gene_ids)
-    elif raw_gene_ids:  # ex: 14578,12759,13525
+    elif raw_gene_ids:  # ex: '15529,7449,25890'
         int_gene_ids = set()
         gene_ids = [gene_id.strip() for gene_id in raw_gene_ids.split(",")]
         for gene_id in gene_ids:
