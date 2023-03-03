@@ -1,6 +1,9 @@
 # Change log
 
 ## [Unreleased]
+### Changed
+- Modify `report` and `pdf` endpoints to return async responses
+- Compress list of genes saved in session object using numcompress (https://github.com/amit1rrr/numcompress) 
 ### Fixed
 - Use virtual environment and multi-stage build in Dockerfile
 - `Babel` object has no attribute `localeselector` error at startup
