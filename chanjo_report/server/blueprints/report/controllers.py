@@ -1,5 +1,6 @@
 from chanjo.store.models import Sample
 from flask import session
+from numcompress import decompress
 
 from chanjo_report.server.constants import LEVELS
 
@@ -14,26 +15,28 @@ def report_contents(request):
     Returns:
         data(dict)
     """
+    int_gene_ids = []
+    gene_id_errors = set()
 
     sample_ids = request.args.getlist("sample_id") or request.form.getlist("sample_id")
     raw_gene_ids = request.args.get("gene_ids") or request.form.get("gene_ids")
-    gene_ids = []
-    if raw_gene_ids:
+    compression = request.args.get("compression") or request.form.get("compression")
+
+    if raw_gene_ids and compression:  # ex: 'B_twxZnv_nB_bwm@'
         session["all_genes"] = raw_gene_ids
+        int_gene_ids = decompress(raw_gene_ids)
+    elif raw_gene_ids:  # ex: 14578,12759,13525
+        int_gene_ids = set()
         gene_ids = [gene_id.strip() for gene_id in raw_gene_ids.split(",")]
-    else:
-        if request.method == "GET" and session.get("all_genes"):
-            gene_ids = [gene_id.strip() for gene_id in session.get("all_genes").split(",")]
+        for gene_id in gene_ids:
+            try:
+                int_gene_ids.add(int(gene_id))
+            except ValueError:
+                gene_id_errors.add(gene_id)
 
-    int_gene_ids = set()
-    gene_id_errors = set()
-    for gene_id in gene_ids:
-        try:
-            int_gene_ids.add(int(gene_id))
-        except ValueError:
-            gene_id_errors.add(gene_id)
-
-    int_gene_ids = list(int_gene_ids)
+        int_gene_ids = list(int_gene_ids)
+    elif request.method == "GET" and session.get("all_genes"):
+        int_gene_ids = decompress(session["all_genes"])
 
     level = int(request.args.get("level") or request.form.get("level") or 10)
     extras = {
@@ -57,6 +60,6 @@ def report_contents(request):
         extras=extras,
         metrics_rows=metrics_rows,
         tx_rows=tx_rows,
-        gene_id_errors=gene_id_errors,
+        gene_id_errors=list(gene_id_errors),
     )
     return data
