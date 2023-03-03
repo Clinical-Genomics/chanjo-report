@@ -2,7 +2,7 @@ alchy
 cairocffi
 chanjo>=4.1.0
 cffi
-Flask
+Flask[async]
 Flask-Assets
 Flask-Babel>=3
 Flask-DebugToolbar
