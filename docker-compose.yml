@@ -6,6 +6,7 @@ services:
     mariadb:
       container_name: mariadb
       image: mariadb:latest
+      platform: linux/amd64
       restart: 'always'
       environment:
         - MYSQL_ROOT_PASSWORD=root
@@ -20,6 +21,7 @@ services:
         - chanjo-net
 
     chanjo-cli:
+      platform: linux/amd64
       container_name: chanjo-cli
       image: clinicalgenomics/chanjo
       depends_on:
@@ -29,6 +31,7 @@ services:
         - chanjo-net
 
     chanjo-report:
+      platform: linux/amd64
       container_name: chanjo-report
       build:
         context: .

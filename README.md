@@ -42,6 +42,24 @@ $ cd chanjo-report
 $ pip install --editable .
 ```
 
+### Docker
+
+To run a local demo with Docker, ensure you have a local Docker running.
+```bash
+make build
+make setup
+make report
+```
+After that, you can interact with a local report in your browser on `http://127.0.0.1:5000`.
+
+If you do not have Docker set up, we can recommend Docker Desktop (https://www.docker.com/products/docker-desktop/).
+If you are on Apple silicon, we currently have good experience with forcing AMD64 before running your build:
+```bash
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+make build
+make setup
+make report
+```
 
 ## License
 MIT. See the [LICENSE](LICENSE) file for more details.

@@ -1,5 +1,11 @@
 # Change log
 
+## Unreleased
+### Added
+- Documentation for Docker demo build
+### Fixed
+- Update from deprecated Ubuntu base image for the PyPi build publish flow
+
 ## 4.9.4 (2023-03-06)
 ### Changed
 - Remove one more use of GET and flask session storage to avoid overloading the session cookie
