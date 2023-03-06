@@ -1,5 +1,9 @@
 # Change log
 
+## Unreleased
+### Fixed
+- Deprecated Ubuntu version in GitHub workflow
+
 ## 4.9.4 (2023-03-06)
 ### Changed
 - Remove one more use of GET and flask session storage to avoid overloading the session cookie
