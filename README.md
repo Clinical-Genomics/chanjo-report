@@ -31,6 +31,46 @@ We are using the output from Chanjo at Clincal Genomics to report success of seq
 
 As a side effect of finding it easiest to convert HTML to PDF, Chanjo Report has a built in Flask server that can be used to render reports dynamically and even be plugged into other Flask servers as a Blueprint.
 
+### Docker demo instance
+
+We provide a Dockerfile to run the server in a container. To run a demo instance of the server with a pre-populated database consisting of a case with 3 samples, clone the repository using the following commands:
+
+```bash
+$ git clone https://github.com/Clinical-Genomics/chanjo-report.git
+$ cd chanjo-report
+```
+
+Then you could make use of the services present in the Docker-compose file following these 3 steps:
+
+1. Build the images
+
+    ```bash
+    make build
+    ```
+
+2. Launch chanjo to create a populate the database with demo data
+
+    ```bash
+    make setup
+    ```
+
+3. Launch the chanjo-report server
+
+    ```bash
+    make report
+    ```
+
+A running instance of the server should now be available at the following url: http://localhost:5000/.
+
+In order to generate a report containing all 3 demo samples, use the respective request args: http://localhost:5000/report?sample_id=sample1&sample_id=sample2&sample_id=sample3
+
+Please be aware that if you are building and running the Dockerized version of chanjo-report without using the docker-compose service, there might be **issues if your OS is an Apple Silicon** (or another ARM64 based architecture).
+In order to build/run the chanjo-report image in the ARM64 architecture, you can set the environment variable DOCKER_DEFAULT_PLATFORM:
+
+```bash
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+```
+
 
 ### Installation
 

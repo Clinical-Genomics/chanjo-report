@@ -30,6 +30,8 @@ services:
 
     chanjo-report:
       container_name: chanjo-report
+      environment:
+        - DOCKER_DEFAULT_PLATFORM=linux/amd64
       build:
         context: .
         dockerfile: Dockerfile
