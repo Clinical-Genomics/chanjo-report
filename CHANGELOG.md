@@ -1,6 +1,6 @@
 # Change log
 
-## Unreleased
+## 4.10 (2023-03-07)
 ### Added
 - Documentation for Docker demo build
 ### Fixed
