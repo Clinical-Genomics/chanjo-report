@@ -2,7 +2,7 @@
 
 ## 4.10.1 (2023-03-10)
 ### Fixed
-- Actions using the renamed main branch
+- Fix GitHub Actions PyPi automation 
 
 ## 4.10 (2023-03-07)
 ### Added
