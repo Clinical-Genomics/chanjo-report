@@ -68,9 +68,10 @@ with codecs.open(os.path.join(HERE, "README.md"), encoding="utf-8") as f:
 setup(
     name="chanjo-report",
     # versions should comply with PEP440
-    version="4.10",
+    version="4.10.1",
     description="Automatically render coverage reports from Chanjo ouput",
     long_description=LONG_DESCRIPTION,
+    long_description_content_type='text/markdown',
     # what does your project relate to?
     keywords="chanjo-report development",
     author="Robin Andeer",

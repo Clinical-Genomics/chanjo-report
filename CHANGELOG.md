@@ -1,5 +1,9 @@
 # Change log
 
+## 4.10.1 (2023-03-10)
+### Fixed
+- Actions using the renamed main branch
+
 ## 4.10 (2023-03-07)
 ### Added
 - Documentation for Docker demo build
