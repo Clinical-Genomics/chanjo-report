@@ -1,5 +1,9 @@
 # Change log
 
+## 4.10.1 (2023-03-10)
+### Fixed
+- Fix GitHub Actions PyPi automation 
+
 ## 4.10 (2023-03-07)
 ### Added
 - Documentation for Docker demo build
