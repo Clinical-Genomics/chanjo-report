@@ -1,5 +1,9 @@
 # Change log
 
+## 4.10.2 (2023-08-16)
+### Fixed
+- Timeout when creating report due to slow transcript_stat query
+
 ## 4.10.1 (2023-03-10)
 ### Fixed
 - Fix GitHub Actions PyPi automation 
