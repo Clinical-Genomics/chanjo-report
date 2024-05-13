@@ -17,14 +17,19 @@ class Alchy(SQLAlchemy, ManagerMixin):
             session_options = {}
 
         session_options.setdefault("query_cls", QueryModel)
-        session_options.setdefault("scopefunc", get_ident)
 
         self.Model = Model
-        self.make_declarative_base(Model)
 
-        super(Alchy, self).__init__(app, use_native_unicode, session_options, metadata=metadata)
+        super(Alchy, self).__init__(app=app, session_options=session_options, metadata=metadata)
 
         self.Query = session_options["query_cls"]
+
+
+    def make_declarative_base(self, metadata=None):
+        """Override parent function with alchy's"""
+        return make_declarative_base(self.session,
+                                     Model=self.Model,
+                                     metadata=metadata)
 
     def __getattr__(self, attr):
         """Delegate all other attributes to self.session"""

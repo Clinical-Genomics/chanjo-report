@@ -12,7 +12,6 @@ path.py
 pymysql
 pyscss
 six
-sqlservice
 Flask-SQLAlchemy
 tabulate
 toml
