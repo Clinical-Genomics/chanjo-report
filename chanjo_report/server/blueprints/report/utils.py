@@ -98,7 +98,6 @@ def keymetrics_rows(samples_ids, genes=None):
     query = (
         api.session.query(
             TranscriptStat,
-            TranscriptStat.sample,
             func.avg(TranscriptStat.mean_coverage).label('mean_coverage'),
             func.avg(TranscriptStat.completeness_10).label('completeness_10'),
             func.avg(TranscriptStat.completeness_15).label('completeness_15'),
