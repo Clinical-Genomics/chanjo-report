@@ -11,6 +11,7 @@ path.py
 pymysql
 pyscss
 six
+Flask-SQLAlchemy
 tabulate
 toml
 toolz
