@@ -1,3 +1,5 @@
+import logging
+
 from chanjo.store.models import Sample
 from flask import session
 
@@ -5,6 +7,7 @@ from chanjo_report.server.constants import LEVELS
 
 from .utils import keymetrics_rows, samplesex_rows, transcripts_rows
 
+LOG = logging.getLogger(__name__)
 
 def report_contents(request):
     """Check args or form provided by user request and prepare contents for report or pdf endpoints
