@@ -1,6 +1,5 @@
-alchy
 cairocffi
-chanjo>=4.1.0
+chanjo @ git+https://github.com/Clinical-Genomics/chanjo@deprecate_alchy
 cffi
 Flask
 Flask-Assets
