@@ -54,7 +54,7 @@ def genes():
     raw_gene_ids = request.args.get("gene_id") or request.form.get("gene_ids")
     completeness_col = getattr(TranscriptStat, "completeness_{}".format(level))
     query = (
-        api.query(TranscriptStat)
+        api.session.query(TranscriptStat)
         .join(TranscriptStat.transcript)
         .filter(completeness_col < 100)
         .order_by(completeness_col)
