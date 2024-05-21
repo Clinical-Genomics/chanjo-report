@@ -26,7 +26,7 @@ def gene(gene_id):
     """Display coverage information on a gene."""
     sample_ids = request.args.getlist("sample_id")
     sample_dict = map_samples(sample_ids=sample_ids)
-    matching_tx = Transcript.filter_by(gene_id=gene_id).first()
+    matching_tx = api.session.query(Transcript).filter_by(gene_id=gene_id).first()
     if matching_tx is None:
         return abort(404, "gene not found: {}".format(gene_id))
     gene_name = matching_tx.gene_name
