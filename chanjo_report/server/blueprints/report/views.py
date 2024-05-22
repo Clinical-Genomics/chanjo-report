@@ -26,7 +26,7 @@ def gene(gene_id):
     """Display coverage information on a gene."""
     sample_ids = request.args.getlist("sample_id")
     sample_dict = map_samples(sample_ids=sample_ids)
-    matching_tx = Transcript.filter_by(gene_id=gene_id).first()
+    matching_tx = api.session.query(Transcript).filter_by(gene_id=gene_id).first()
     if matching_tx is None:
         return abort(404, "gene not found: {}".format(gene_id))
     gene_name = matching_tx.gene_name
@@ -49,12 +49,12 @@ def genes():
     limit = int(request.args.get("limit", 30))
     exonlink = request.args.get("exonlink")
     sample_ids = request.args.getlist("sample_id")
-    samples_q = Sample.filter(Sample.id.in_(sample_ids))
+    samples_q = api.session.query(Sample).filter(Sample.id.in_(sample_ids))
     level = request.args.get("level", 10)
     raw_gene_ids = request.args.get("gene_id") or request.form.get("gene_ids")
     completeness_col = getattr(TranscriptStat, "completeness_{}".format(level))
     query = (
-        api.query(TranscriptStat)
+        api.session.query(TranscriptStat)
         .join(TranscriptStat.transcript)
         .filter(completeness_col < 100)
         .order_by(completeness_col)

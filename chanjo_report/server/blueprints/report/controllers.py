@@ -5,7 +5,6 @@ from chanjo_report.server.constants import LEVELS
 
 from .utils import keymetrics_rows, samplesex_rows, transcripts_rows
 
-
 def report_contents(request):
     """Check args or form provided by user request and prepare contents for report or pdf endpoints
     Args:

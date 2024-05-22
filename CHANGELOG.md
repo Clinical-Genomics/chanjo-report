@@ -1,5 +1,9 @@
 # Change log
 
+## [unreleased]
+### Changed
+- Removed alchy dependency
+
 ## 4.10.2 (2023-08-16)
 ### Fixed
 - Timeout when creating report due to slow transcript_stat query
