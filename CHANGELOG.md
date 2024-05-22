@@ -3,6 +3,8 @@
 ## [unreleased]
 ### Changed
 - Removed alchy dependency
+### Fixed
+- Timeout when creating genes overview due to slow transcript_stat query
 
 ## 4.10.2 (2023-08-16)
 ### Fixed
