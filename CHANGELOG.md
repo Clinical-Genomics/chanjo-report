@@ -1,6 +1,6 @@
 # Change log
 
-## [unreleased]
+## 4.11 (2024-05-23)
 ### Changed
 - Removed alchy dependency
 ### Fixed
