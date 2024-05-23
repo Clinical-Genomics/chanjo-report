@@ -55,6 +55,7 @@ def genes():
     completeness_col = getattr(TranscriptStat, "completeness_{}".format(level))
     query = (
         api.session.query(TranscriptStat)
+        .with_hint(TranscriptStat, "USE INDEX (_sample_transcript_uc)")
         .join(TranscriptStat.transcript)
         .filter(completeness_col < 100)
         .order_by(completeness_col)
