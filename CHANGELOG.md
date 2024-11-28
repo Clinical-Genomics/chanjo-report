@@ -2,7 +2,7 @@
 
 ## 4.11.2 (2024-11-28)
 ### Fixed
-- 
+- Deprecate pkg_resources
 
 ## 4.11.1 (2024-06-05)
 ### Fixed
