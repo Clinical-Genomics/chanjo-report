@@ -1,5 +1,9 @@
 # Change log
 
+## 4.11.2 (2024-11-28)
+### Fixed
+- 
+
 ## 4.11.1 (2024-06-05)
 ### Fixed
 - Added cryptography module among the dependencies
