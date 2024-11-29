@@ -1,7 +1,7 @@
 ###########
 # BUILDER #
 ###########
-FROM clinicalgenomics/python3.8-venv:1.0 AS python-builder
+FROM clinicalgenomics/python3.12-venv AS python-builder
 
 ENV PATH="/venv/bin:$PATH"
 
@@ -14,10 +14,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 #########
 # FINAL #
 #########
-FROM python:3.8-slim
+FROM python:3.12-slim-bookworm
 
 LABEL about.license="MIT License (MIT)"
-LABEL about.tags="chanjo-report,chanjo,bam,NGS,coverage,python,python3.8,flask"
+LABEL about.tags="chanjo-report,chanjo,bam,NGS,coverage,python,flask"
 LABEL about.home="https://github.com/Clinical-Genomics/chanjo-report"
 
 # Install required libs
