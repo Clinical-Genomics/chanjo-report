@@ -5,6 +5,7 @@
 - Updated Dockerfile to use Python 3.12
 ### Fixed
 - Deprecate pkg_resources
+- Healthcheck of MariaDB container in docker-compose.yml
 
 ## 4.11.1 (2024-06-05)
 ### Fixed
