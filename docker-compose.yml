@@ -13,10 +13,12 @@ services:
         - MYSQL_DATABASE=chanjo4_test
         - MYSQL_USER=chanjoUser
         - MYSQL_PASSWORD=chanjoPassword
-      healthcheck: # Wait for the service to be ready before accepting incoming connections
-        test: "mysql --user=chanjoUser --password=chanjoPassword --execute \"SHOW DATABASES;\""
-        timeout: 10s
-        retries: 20
+      healthcheck:
+          test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
+          start_period: 10s
+          interval: 10s
+          timeout: 5s
+          retries: 3
       networks:
         - chanjo-net
 
