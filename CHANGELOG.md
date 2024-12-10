@@ -1,6 +1,6 @@
 # Change log
 
-## 4.11.2 (2024-11-28)
+## 4.11.2 (2024-11-10)
 ### Fixed
 - Deprecate pkg_resources
 

@@ -1,5 +1,5 @@
 cairocffi
-chanjo>=4.7
+chanjo>=4.7.1
 cffi
 cryptography
 Flask
