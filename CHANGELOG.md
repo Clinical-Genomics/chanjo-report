@@ -1,6 +1,8 @@
 # Change log
 
 ## 4.11.2 (2024-11-10)
+### Changed
+- Updated Dockerfile to use Python 3.12
 ### Fixed
 - Deprecate pkg_resources
 

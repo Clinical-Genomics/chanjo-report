@@ -11,12 +11,12 @@ setup: ## Use Chanjo to set up a mysql database containing demo data
 	echo "Setup chanjo database"
 	docker-compose run chanjo-cli /bin/bash -c "chanjo -d mysql+pymysql://chanjoUser:chanjoPassword@mariadb/chanjo4_test init --auto demodata && chanjo --config demodata/chanjo.yaml link demodata/hgnc.grch37p13.exons.bed"
 	echo "Loading coverage from demo files"
-	docker-compose run chanjo-cli chanjo -d mysql+pymysql://chanjoUser:chanjoPassword@mariadb/chanjo4_test load -n sample1 --group-name test_group -g test_group chanjo/init/demo-files/sample1.coverage.bed
-	docker-compose run chanjo-cli chanjo -d mysql+pymysql://chanjoUser:chanjoPassword@mariadb/chanjo4_test load -n sample2 --group-name test_group -g test_group chanjo/init/demo-files/sample2.coverage.bed
-	docker-compose run chanjo-cli chanjo -d mysql+pymysql://chanjoUser:chanjoPassword@mariadb/chanjo4_test load -n sample3 --group-name test_group -g test_group chanjo/init/demo-files/sample3.coverage.bed
+	docker-compose run chanjo-cli chanjo --config demodata/chanjo.yaml load -n sample1 --group-name test_group -g test_group chanjo/init/demo-files/sample1.coverage.bed
+	docker-compose run chanjo-cli chanjo --config demodata/chanjo.yaml load -n sample2 --group-name test_group -g test_group chanjo/init/demo-files/sample2.coverage.bed
+	docker-compose run chanjo-cli chanjo --config demodata/chanjo.yaml load -n sample3 --group-name test_group -g test_group chanjo/init/demo-files/sample3.coverage.bed
 
 report: ## Create a coverage report in HTML format
-	docker-compose run -p 5000:5000 chanjo-report chanjo -d mysql+pymysql://chanjoUser:chanjoPassword@mariadb/chanjo4_test report --render html
+	docker-compose run -p 5000:5000 chanjo-report chanjo --config demodata/chanjo.yaml report --render html
 
 prune: ## Remove orphans and dangling images
 	docker-compose down --remove-orphans
