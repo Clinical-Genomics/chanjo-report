@@ -1,5 +1,12 @@
 # Change log
 
+## 4.11.2 (2024-11-10)
+### Changed
+- Updated Dockerfile to use Python 3.12
+### Fixed
+- Deprecate pkg_resources
+- Healthcheck of MariaDB container in docker-compose.yml
+
 ## 4.11.1 (2024-06-05)
 ### Fixed
 - Added cryptography module among the dependencies
