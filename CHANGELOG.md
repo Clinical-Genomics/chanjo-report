@@ -1,8 +1,8 @@
 # Change log
 
-## unreleased
+## 4.11.3 (2025-03-13)
 ### Fixed
-- Removed abandonware webassets via removal of unused Flask-Assets dependency 
+- Removed `webassets` via removal of unused Flask-Assets dependency
 
 ## 4.11.2 (2024-11-10)
 ### Changed
