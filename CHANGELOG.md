@@ -1,5 +1,9 @@
 # Change log
 
+## 4.11.3 (2025-03-13)
+### Fixed
+- Removed `webassets` via removal of unused Flask-Assets dependency
+
 ## 4.11.2 (2024-11-10)
 ### Changed
 - Updated Dockerfile to use Python 3.12
