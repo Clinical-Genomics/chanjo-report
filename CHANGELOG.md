@@ -1,5 +1,9 @@
 # Change log
 
+## 4.11.4 (2025-08-13)
+### Fixed
+- Update automation with newer images to allow e.g. pip deployment
+
 ## 4.11.3 (2025-03-13)
 ### Fixed
 - Removed `webassets` via removal of unused Flask-Assets dependency
