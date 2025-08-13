@@ -4,6 +4,11 @@
 ### Fixed
 - Update automation with slightly older python, and explicit setuptools
 
+## 4.11.5 (2025-08-13)
+### Fixed
+- Update automation with slightly older python (3.10), and explicit setuptools
+- Bump version and fix changelog
+
 ## 4.11.4 (2025-08-13)
 ### Fixed
 - Update automation with newer images to allow e.g. pypi deployment
