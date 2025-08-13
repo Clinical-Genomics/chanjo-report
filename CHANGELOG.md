@@ -8,6 +8,7 @@
 ### Fixed
 - Update automation with slightly older python (3.10), and explicit setuptools
 - Bump version and fix changelog
+- Once more, test with 3.12 and explicit setuptools install in automation
 
 ## 4.11.4 (2025-08-13)
 ### Fixed
