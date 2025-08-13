@@ -1,8 +1,12 @@
 # Change log
 
+## 4.11.5 (2025-08-13)
+### Fixed
+- Update automation with slightly older python, and explicit setuptools
+
 ## 4.11.4 (2025-08-13)
 ### Fixed
-- Update automation with newer images to allow e.g. pip deployment
+- Update automation with newer images to allow e.g. pypi deployment
 
 ## 4.11.3 (2025-03-13)
 ### Fixed
