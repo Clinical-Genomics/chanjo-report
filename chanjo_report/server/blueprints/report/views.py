@@ -7,6 +7,8 @@ from flask import Blueprint, abort, jsonify, render_template, request, send_file
 
 from chanjo_report.server.extensions import api
 
+from chanjo_report.server.utils import html_to_pdf_file
+
 from . import controllers
 from .utils import chromosome_coverage, keymetrics_rows, map_samples, transcript_coverage
 
@@ -18,7 +20,6 @@ report_bp = Blueprint(
     static_folder="static",
     static_url_path="/static/report",
 )
-
 
 @report_bp.route("/genes/<gene_id>")
 def gene(gene_id):
@@ -137,7 +138,7 @@ def pdf():
     data = controllers.report_contents(request)
 
     html_report = render_template("report/report.html", **data)
-    bytes_file = controllers.html_to_pdf_file(
+    bytes_file = html_to_pdf_file(
         html_string=html_report, orientation="portrait", dpi=300, zoom=0.6
     )
 
