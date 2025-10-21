@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from flask import url_for
-from flask_weasyprint import HTML
 
 from chanjo_report.server.app import create_app
 from chanjo_report.server.config import DefaultConfig
@@ -8,6 +7,8 @@ from chanjo_report.server.config import DefaultConfig
 
 def render_pdf(options):
     """Generate a PDF report for a given group of samples."""
+    pass
+    """
     group_id = options['report']['group']
     url = "/groups/{}".format(group_id)
 
@@ -22,5 +23,5 @@ def render_pdf(options):
     app = create_app(config=config)
     with app.test_request_context(base_url='http://localhost/'):
         url = url_for('report.group', group_id=group_id, panel_name=panel_name)
-        # /hello/ is resolved relative to the context’s URL.
-        return HTML(url).write_pdf()
+        # /hello/ is resolved relative to
+    """
