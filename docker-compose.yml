@@ -15,7 +15,7 @@ services:
         - MYSQL_PASSWORD=chanjoPassword
       healthcheck:
           test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
-          start_period: 10s
+          start_period: 1m
           interval: 10s
           timeout: 5s
           retries: 3
