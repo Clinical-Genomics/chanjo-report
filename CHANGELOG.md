@@ -2,7 +2,7 @@
 
 ## [unreleased]
 ### Changed
-- Replaced Flask-weasyprint with pdfkit (#79)
+- Replaced Flask-weasyprint (cairo and pangp-based) with pdfkit (#79)
 
 ## 4.11.5 (2025-08-13)
 ### Fixed
