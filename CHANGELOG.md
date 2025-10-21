@@ -2,7 +2,25 @@
 
 ## [unreleased]
 ### Fixed
-- Fix Chanjo setup healthcheck in docker-compose demo (#77)
+- Healthcheck in Docker demo setup (#77)
+
+## 4.11.5 (2025-08-13)
+### Fixed
+- Update automation with slightly older python, and explicit setuptools
+
+## 4.11.5 (2025-08-13)
+### Fixed
+- Update automation with slightly older python (3.10), and explicit setuptools
+- Bump version and fix changelog
+- Once more, test with 3.12 and explicit setuptools install in automation
+
+## 4.11.4 (2025-08-13)
+### Fixed
+- Update automation with newer images to allow e.g. pypi deployment
+
+## 4.11.3 (2025-03-13)
+### Fixed
+- Removed `webassets` via removal of unused Flask-Assets dependency
 
 ## 4.11.2 (2024-11-10)
 ### Changed
