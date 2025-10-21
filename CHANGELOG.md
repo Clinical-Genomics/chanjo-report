@@ -1,5 +1,9 @@
 # Change log
 
+## [unreleased]
+### Changed
+- Replaced Flask-weasyprint with pdfkit (#79)
+
 ## 4.11.5 (2025-08-13)
 ### Fixed
 - Update automation with slightly older python, and explicit setuptools
