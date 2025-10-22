@@ -1,5 +1,9 @@
 # Change log
 
+## [unreleased]
+### Added
+- Enable PEP 660–compatible editable installs (`pip install -e`) (#81)
+
 ## 4.11.5 (2025-08-13)
 ### Fixed
 - Update automation with slightly older python, and explicit setuptools
