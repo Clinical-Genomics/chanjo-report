@@ -1,14 +1,12 @@
-cairocffi
 chanjo>=4.7.2
-cffi
 cryptography
 Flask
 Flask-Babel>=3
 Flask-DebugToolbar
-Flask-WeasyPrint
 importlib_resources
 lxml>=3.0
 path.py
+pdfkit
 pymysql
 pyscss
 six
