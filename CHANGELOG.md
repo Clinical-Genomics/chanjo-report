@@ -3,6 +3,8 @@
 ## [unreleased]
 ### Added
 - Enable PEP 660–compatible editable installs (`pip install -e`) (#81)
+### Changed
+- Replaced Flask-weasyprint (cairo and pango-based) with pdfkit (#79)
 
 ## 4.11.5 (2025-08-13)
 ### Fixed
