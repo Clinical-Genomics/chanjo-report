@@ -21,8 +21,7 @@ LABEL about.tags="chanjo-report,chanjo,bam,NGS,coverage,python,flask"
 LABEL about.home="https://github.com/Clinical-Genomics/chanjo-report"
 
 # Install required libs
-RUN apt-get update && apt-get install -y \
-  libcairo2 libpango-1.0-0 libpangocairo-1.0-0
+RUN apt-get update && apt-get install -y wkhtmltopdf
 
 # make sure all messages always reach console
 ENV PYTHONUNBUFFERED=1

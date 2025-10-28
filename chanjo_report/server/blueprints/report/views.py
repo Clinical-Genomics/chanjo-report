@@ -3,10 +3,11 @@ import datetime
 import logging
 
 from chanjo.store.models import Sample, Transcript, TranscriptStat
-from flask import Blueprint, abort, jsonify, render_template, request, url_for
-from flask_weasyprint import HTML, render_pdf
+from flask import Blueprint, abort, jsonify, render_template, request, send_file, url_for
 
 from chanjo_report.server.extensions import api
+
+from chanjo_report.server.utils import html_to_pdf_file
 
 from . import controllers
 from .utils import chromosome_coverage, keymetrics_rows, map_samples, transcript_coverage
@@ -19,7 +20,6 @@ report_bp = Blueprint(
     static_folder="static",
     static_url_path="/static/report",
 )
-
 
 @report_bp.route("/genes/<gene_id>")
 def gene(gene_id):
@@ -138,10 +138,13 @@ def pdf():
     data = controllers.report_contents(request)
 
     html_report = render_template("report/report.html", **data)
-    response = render_pdf(HTML(string=html_report))
+    bytes_file = html_to_pdf_file(
+        html_string=html_report, orientation="portrait", dpi=300, zoom=0.6
+    )
 
-    # check if the request is to download the file right away
     data_dict = request.form if request.method == "POST" else request.args
+    fname = "coverage-report.pdf"
+
     if "dl" in data_dict:
         date_str = str(datetime.datetime.now().strftime("%Y-%m-%d"))
         fname = "_".join(["coverage-report", date_str + ".pdf"])
@@ -149,7 +152,9 @@ def pdf():
         if "case_name" in data_dict:  # if downloaded pdf should be named after a case sisplay name
             fname = "_".join([str(data_dict["case_name"]), fname])
 
-        header = "attachment; filename={}".format(fname)
-        response.headers["Content-Disposition"] = header
-
-    return response
+    return send_file(
+        bytes_file,
+        download_name=fname,
+        mimetype="application/pdf",
+        as_attachment=True,
+    )
