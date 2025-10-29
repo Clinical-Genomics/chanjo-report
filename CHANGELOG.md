@@ -4,7 +4,7 @@
 ### Changed
 - Replaced Flask-weasyprint (cairo and pango-based) with pdfkit (#79)
 ### Fixed
-- `chanjo report --render pdf` command, Now accepting a list of samples and output file (#80)
+- `chanjo report --render pdf` command now accepting a list of samples and output file (#80)
 
 ## 4.11.5 (2025-08-13)
 ### Fixed
