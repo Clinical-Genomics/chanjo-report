@@ -3,6 +3,8 @@
 ## [unreleased]
 ### Changed
 - Replaced Flask-weasyprint (cairo and pango-based) with pdfkit (#79)
+### Fixed
+- Healthcheck in Docker demo setup (#77)
 
 ## 4.11.5 (2025-08-13)
 ### Fixed
