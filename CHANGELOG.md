@@ -8,6 +8,7 @@
 - Removed `https://bootswatch.com/simplex/bootstrap.min.css` lib import from two base layouts since it's no longer available (#83)
 ### Fixed
 - Healthcheck in Docker demo setup (#77)
+- `chanjo report --render pdf` command now accepting a list of samples and output file (#80)
 
 ## 4.11.5 (2025-08-13)
 ### Fixed
