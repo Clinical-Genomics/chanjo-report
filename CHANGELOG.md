@@ -1,6 +1,6 @@
 # Change log
 
-## [unreleased]
+## 4.12.0 (2025-10-29) 
 ### Added
 - Enable PEP 660–compatible editable installs (`pip install -e`) (#81)
 ### Changed
