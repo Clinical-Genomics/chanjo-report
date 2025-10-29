@@ -1,6 +1,8 @@
 # Change log
 
 ## [unreleased]
+### Added
+- Enable PEP 660–compatible editable installs (`pip install -e`) (#81)
 ### Changed
 - Replaced Flask-weasyprint (cairo and pango-based) with pdfkit (#79)
 - Removed `https://bootswatch.com/simplex/bootstrap.min.css` lib import from two base layouts since it's no longer available (#83)
