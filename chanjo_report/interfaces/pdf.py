@@ -1,34 +1,29 @@
 # -*- coding: utf-8 -*-
-from flask import url_for
+from werkzeug.datastructures import MultiDict
+
 from chanjo_report.server.app import create_app
 from chanjo_report.server.config import DefaultConfig
-from chanjo_report.server.utils import html_to_pdf_file
-
+from chanjo_report.server.blueprints.report.controllers import report_contents
+from chanjo_report.server.blueprints.report.views import pdf as pdf_view
 
 def render_pdf(options):
-    """Generate a PDF report for a given group of samples and return as bytes file."""
-    group_id = options['report']['group']
-    report_options = options['report']
+    """Generate a PDF report for a given group of samples."""
 
     config = DefaultConfig
-    config.CHANJO_URI = options.get('database')
+    config.SQLALCHEMY_DATABASE_URI = options['database']
+    report_options = options['report']
+    config.CHANJO_PANEL_NAME = report_options.get('panel_name')
     config.CHANJO_LANGUAGE = report_options.get('language')
     config.CHANJO_PANEL = report_options.get('panel')
-    panel_name = report_options.get('panel_name')
+    config.DEBUG = report_options.get('debug')
+
+    data = MultiDict([("sample_id", s) for s in report_options["samples"]])
 
     app = create_app(config=config)
+    with app.test_request_context("/report/pdf", method="POST", data=data):
+        response = pdf_view()
+        output_file = report_options.get("outfile") or "report.pdf"
+        with open(output_file, "wb") as f:
+            f.write(response.data)
 
-    # Generate the URL for the report page
-    with app.test_request_context(base_url='http://localhost/'):
-        report_url = url_for('report.group', group_id=group_id, panel_name=panel_name)
-
-    # Use your HTML-to-PDF function to fetch and render the page
-    bytes_file = html_to_pdf_file(
-        html_string=None,
-        url=report_url,
-        orientation="portrait",
-        dpi=300,
-        zoom=0.6
-    )
-
-    return bytes_file
+        print(f"PDF report saved to {output_file}")
