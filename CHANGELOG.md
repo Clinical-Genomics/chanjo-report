@@ -3,6 +3,7 @@
 ## [unreleased]
 ### Changed
 - Replaced Flask-weasyprint (cairo and pango-based) with pdfkit (#79)
+- Removed `https://bootswatch.com/simplex/bootstrap.min.css` lib import from two base layouts since it's no longer available (#83)
 ### Fixed
 - Healthcheck in Docker demo setup (#77)
 
