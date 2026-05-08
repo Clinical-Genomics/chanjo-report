@@ -1,6 +1,6 @@
 # Change log
 
-## Unreleased
+## 4.12.1 (2026-05-08)
 ### Fixed 
 - Update automation, bump chanjo version to 4.9.1
 
