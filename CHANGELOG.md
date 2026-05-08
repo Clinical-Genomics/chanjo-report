@@ -1,5 +1,9 @@
 # Change log
 
+## 4.12.2 (2026-05-08)
+### Fixed
+- Order of data returned in the `samplesex_rows` function (#89)
+
 ## 4.12.1 (2026-05-08)
 ### Fixed 
 - Update automation, bump chanjo version to 4.9.1
