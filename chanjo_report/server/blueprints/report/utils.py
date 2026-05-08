@@ -62,19 +62,27 @@ def map_samples(group_id=None, sample_ids=None):
 
 def samplesex_rows(sample_ids):
     """Generate sex prediction info rows."""
-    sex_query = (api.session.query(
-        TranscriptStat.sample_id,
-        Transcript.chromosome,
-        func.avg(TranscriptStat.mean_coverage)
-    ).join(
-        TranscriptStat.transcript
-    ).filter(
-        Transcript.chromosome.in_(['X', 'Y']),
-        TranscriptStat.sample_id.in_(sample_ids)
-    ).group_by(
-        TranscriptStat.sample_id,
-        Transcript.chromosome
-    ))
+
+    sex_query = (
+        api.session.query(
+            TranscriptStat.sample_id,
+            Transcript.chromosome,
+            func.avg(TranscriptStat.mean_coverage)
+        )
+        .join(TranscriptStat.transcript)
+        .filter(
+            Transcript.chromosome.in_(['X', 'Y']),
+            TranscriptStat.sample_id.in_(sample_ids)
+        )
+        .group_by(
+            TranscriptStat.sample_id,
+            Transcript.chromosome
+        )
+        .order_by(
+            TranscriptStat.sample_id,
+            Transcript.chromosome
+        )
+    )
 
     samples = itertools.groupby(sex_query, lambda row: row[0])
     for sample_id, chromosomes in samples:
