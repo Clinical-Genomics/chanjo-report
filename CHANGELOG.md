@@ -1,5 +1,9 @@
 # Change log
 
+## Unreleased
+### Fixed 
+- Update automation, bump chanjo version to 4.9.1
+
 ## 4.12.0 (2025-10-29) 
 ### Added
 - Enable PEP 660–compatible editable installs (`pip install -e`) (#81)
