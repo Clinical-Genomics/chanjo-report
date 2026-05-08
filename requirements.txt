@@ -1,4 +1,4 @@
-chanjo>=4.7.2
+chanjo>=4.9.1
 cryptography
 Flask
 Flask-Babel>=3
