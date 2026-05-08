@@ -2,7 +2,7 @@
 
 ## 4.12.2 (2026-05-08)
 ### Fixed
-- Order of data returned in the `samplesex_rows` function ()
+- Order of data returned in the `samplesex_rows` function (#89)
 
 ## 4.12.1 (2026-05-08)
 ### Fixed 
