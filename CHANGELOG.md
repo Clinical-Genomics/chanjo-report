@@ -1,6 +1,6 @@
 # Change log
 
-## unreleased
+## 4.12.3 (2026-10-02)
 ### Fixed
 - Build with latest chanjo 4.9.2 including the sqlalchemy async io fix
 
