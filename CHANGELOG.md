@@ -1,5 +1,9 @@
 # Change log
 
+## unreleased
+### Fixed
+- Build with latest chanjo 4.9.2 including the sqlalchemy async io fix
+
 ## 4.12.2 (2026-05-08)
 ### Fixed
 - Order of data returned in the `samplesex_rows` function (#89)
