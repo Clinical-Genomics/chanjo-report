@@ -141,3 +141,36 @@ def test_language_falls_back_to_accept_header(db_uri):
         "/report", query_string={"sample_id": SAMPLES}, headers={"Accept-Language": "sv"}
     )
     assert "Allmänt viktiga mått" in response.get_data(as_text=True)
+
+
+def test_report_body_is_a_fragment(client):
+    """/report/body has the report contents only, ready to embed in another page."""
+    response = client.get("/report/body", query_string={"sample_id": SAMPLES, "level": 15})
+    assert response.status_code == 200
+    html = response.get_data(as_text=True)
+    assert "Quality report" in html
+    assert "Transcript coverage at: 15x" in html
+    for sample in SAMPLES:
+        assert sample in html
+    for page_chrome in ("<html", "<head", "<body", "navbar", "<form", "Customize", "<script"):
+        assert page_chrome not in html
+
+
+def test_report_body_takes_the_same_arguments_as_report(client):
+    response = client.post(
+        "/report/body",
+        data={"sample_id": SAMPLES, "gene_ids": f"{AGRN_GENE_ID},abc", "panel_name": "My panel"},
+    )
+    assert response.status_code == 200
+    html = response.get_data(as_text=True)
+    assert "My panel" in html
+    assert "Unsupported gene identifiers" in html
+
+
+def test_report_page_keeps_its_navbar_and_filters(client):
+    """The full report page is unchanged by the fragment route."""
+    response = client.get("/report", query_string={"sample_id": SAMPLES})
+    html = response.get_data(as_text=True)
+    assert "navbar" in html
+    assert "Customize" in html
+    assert "Quality report" in html

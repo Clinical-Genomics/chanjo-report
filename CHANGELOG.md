@@ -2,6 +2,7 @@
 
 ## [unreleased]
 ### Added
+- `/report/body` route that returns only the report contents, without the navbar, filter form or page head, with compact tables that fit the width of the page they are embedded in. Takes the same arguments as `/report`. Intended for embedding the coverage report in other pages, such as the Scout case report (#25)
 - Tests that load demo data into a SQLite chanjo database and request the report, gene, JSON and PDF routes, run in CI on every pull request
 ### Changed
 - Python moved from 3.12 to 3.14, in `.python-version`, the Dockerfiles and the test image

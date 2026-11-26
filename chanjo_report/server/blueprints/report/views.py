@@ -133,6 +133,17 @@ def report():
     return render_template("report/report.html", **data)
 
 
+@report_bp.route("/report/body", methods=["POST", "GET"])
+def report_body():
+    """Return only the report contents, to embed in another page.
+
+    Takes the same arguments as /report but leaves out the navbar, the filter form, the page
+    head and the stylesheet and script links. The tables use the available width.
+    """
+    data = controllers.report_contents(request)
+    return render_template("report/report_body.html", **data)
+
+
 @report_bp.route("/report/pdf", methods=["POST", "GET"])
 def pdf():
     """Generate a PDF coverage report for a group of samples."""
