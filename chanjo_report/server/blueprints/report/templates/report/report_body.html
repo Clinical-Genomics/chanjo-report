@@ -1,0 +1,11 @@
+{# The report body only, for embedding in another page: no navbar, filters, head or scripts #}
+<style>
+	/* Compact tables that use the available width instead of a fixed page width */
+	.chanjo-report-embed .table-responsive { overflow-x: visible; }
+	.chanjo-report-embed table { width: 100%; font-size: 13px; }
+	.chanjo-report-embed table th,
+	.chanjo-report-embed table td { padding: 4px 6px; }
+</style>
+<div class="chanjo-report-embed">
+	{% include 'report/_report_body.html' %}
+</div>
