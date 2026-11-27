@@ -1,4 +1,4 @@
-.PHONY: help build setup report test prune
+.PHONY: help build setup report test release release-notes prune
 .DEFAULT_GOAL := help
 
 help:
@@ -18,6 +18,13 @@ setup: ## Use Chanjo to set up a mysql database containing demo data
 test: ## Run the tests in containers against MariaDB (needs only Docker). TESTS=path for a subset
 	docker compose -f docker-compose.test.yml run --rm --build test $(or $(TESTS),tests); status=$$?; \
 	docker compose -f docker-compose.test.yml down --volumes; exit $$status
+
+release: ## Prepare a release: make release BUMP=patch|minor|major|X.Y.Z (bumps the version, dates the changelog)
+	@test -n "$(BUMP)" || { echo "Usage: make release BUMP=patch|minor|major|X.Y.Z"; exit 1; }
+	uv run python scripts/release.py prepare $(BUMP)
+
+release-notes: ## Print the changelog section of the current version, for the GitHub release
+	@uv run python scripts/release.py notes
 
 report: ## Create a coverage report in HTML format
 	docker-compose run -p 5000:5000 chanjo-report chanjo -d mysql+pymysql://chanjoUser:chanjoPassword@mariadb/chanjo4_test report --render html

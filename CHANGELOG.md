@@ -12,6 +12,7 @@
 - Dockerfile installs dependencies from `uv.lock`
 - Tests run in Docker containers with `make test`, against MariaDB 11 as in production. CI runs the same target
 - Removed the obsolete Travis config and `invoke` tasks
+- Publishing to PyPI now runs the linter and tests first, only starts when a release is published (not saved as a draft), and fails if the release tag does not match the version in `pyproject.toml`. The workflow also has read-only token permissions. `make release` bumps the version and dates the changelog, `make release-notes` prints the notes for the GitHub release, and the steps are documented in `CONTRIBUTING.md`
 
 ### Removed
 - Unused `pyscss` dependency. SCSS compilation was removed in 2014 and the package ships plain CSS, but the requirement was never dropped. It is a source-only package that cannot be installed without a build step.
