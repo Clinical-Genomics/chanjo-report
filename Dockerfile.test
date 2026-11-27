@@ -33,9 +33,10 @@ WORKDIR /home/worker/app
 COPY --chown=worker:worker pyproject.toml uv.lock README.md LICENSE hatch_build.py ./
 RUN uv sync --frozen --no-install-project
 
-# Application code and tests
+# Application code, tests and the release script (which has tests)
 COPY --chown=worker:worker chanjo_report ./chanjo_report
 COPY --chown=worker:worker tests ./tests
+COPY --chown=worker:worker scripts ./scripts
 RUN uv sync --frozen
 
 # Arguments replace the CMD, so any test path can be given instead of the whole suite.

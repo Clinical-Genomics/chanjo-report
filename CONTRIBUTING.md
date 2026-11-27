@@ -114,7 +114,32 @@ Before you submit a pull request, check that it meets these guidelines:
 
 2. If the pull request adds functionality, the docs should be updated. Put your new functionality into a function with a docstring, and add the feature to the list in README.md.
 
-3. The pull request should pass the GitHub Actions workflow in `.github/workflows/tests.yml`, which runs the linter and tests on Python 3.14.
+3. The pull request should pass the GitHub Actions workflows in `.github/workflows/`: `lint.yml` runs ruff and `tests.yml` runs the tests in containers on Python 3.14.
+
+
+## Releasing
+Only maintainers with access to the PyPI project can publish. The package version lives in one place, `version` in `pyproject.toml`.
+
+1. Prepare the release. This bumps the version in `pyproject.toml` and `uv.lock` together and dates the `[unreleased]` section of `CHANGELOG.md`, leaving a new empty one. It stops without changing anything if `[unreleased]` is empty:
+
+  ```bash
+  $ make release BUMP=minor    # or patch, major, or an exact version like 4.13.0
+  ```
+
+2. Review `git diff`, commit it on a branch (for example `version_4.13.0`) as "Bump version to 4.13.0", open a pull request and merge it once the checks pass. Do not edit the version by hand, because a stale `uv.lock` makes `uv sync --locked` fail in CI and in the Docker build.
+
+3. On an up-to-date `main`, publish the release. The tag must be `v` plus the version:
+
+  ```bash
+  $ git switch main && git pull
+  $ gh release create "v$(uv version --short)" --target main --title "v$(uv version --short)" --notes "$(make -s release-notes)"
+  ```
+
+  This publishes straight away. On the GitHub website, the same is Releases, Draft a new release, tag `vX.Y.Z` on `main`, paste the output of `make release-notes` and click **Publish release**. Saving it as a draft does not publish anything.
+
+4. Publishing the release starts the "Build and Publish to PyPI" workflow. It runs the linter and the tests, checks that the tag matches the version in `pyproject.toml`, builds the wheel and source distribution with `uv build`, and uploads them to PyPI. Follow it under the Actions tab, and check that the new version is on [PyPI](https://pypi.org/project/chanjo-report/).
+
+If the workflow fails, fix the cause, delete the release and its tag, and publish a new release. PyPI never accepts the same version twice, so a version that did reach PyPI needs a new version number.
 
 
 ## Coding conventions
